@@ -1,12 +1,12 @@
-# LuceLink 3.0 設置ガイド（利用者・補助エージェント向け）
+# LuceLink 3.0 設置ガイド（利用者・AIエージェント向け）
 
 Cloudflareへのログイン、権限の承認とSecretの登録は利用者本人が行います。AIエージェントは、利用者の承認と利用可能な機能に応じて、ファイルの照合や設置操作を手伝えます。
 
 ## 先に用意するもの
 
-- 利用者自身のCloudflareアカウント、利用するAIサービスのAPIキー、同じ版の `app/` と `worker/worker.js` を含む配布ZIP。GitHubの「Releases」で該当する版を開き、Assetsから `app/` と `worker/worker.js` を含む配布ZIPを選びます。展開した同じZIPから両方を使ってください。
-- 更新の場合は現在のZIP Backupと利用中の配布原本。背景画像も残すなら書き出しオプションに含めます。既存のPages DeploymentとWorker Versionも控えます。
-- Pagesは画面を開くURL、Workerは接続設定に入れるURLです。以下の文字列は形式例です。
+- ご自身のCloudflareアカウント、利用するAIサービスのAPIキー、同じ版の `app/` と `worker/worker.js` を含む配布ZIPを用意します。GitHubの「Releases」で該当する版を開き、Assetsから `app/` と `worker/worker.js` を含む配布ZIPを選びます。展開した同じZIPから両方を使ってください。
+- 更新の場合は、現在お使いのアプリで最新のZIPバックアップを保存し、利用中の版の配布ファイルも保管します。背景画像も残したい場合は、バックアップの書き出し時に背景画像を含めます。現在のPages DeploymentとWorker Versionも控えます。
+- PagesのURLはアプリを開くために使い、WorkerのURLはアプリの接続設定に入力します。以下の文字列は形式例です。
 
 | 目的 | URLの形式例 |
 | --- | --- |
@@ -16,7 +16,7 @@ Cloudflareへのログイン、権限の承認とSecretの登録は利用者本�
 ## 1. Workerと認証
 
 1. Cloudflare管理画面の「Workers & Pages」で、自分のアカウントにWorkerを作ります。初回は「Create application」からWorkerを選び、「Hello World example」などの初期テンプレートで作成します。作成したWorkerの「Edit code」を開き、初期コードを配布物の `worker/worker.js` の内容に置き換え、「Deploy」で反映します。更新する場合も、同じ版の配布物にあるWorkerをPagesより先に反映します。
-2. このWorkerの「Settings」→「Variables and Secrets」→「Add」で、種類を「Secret」にし、十分長いランダムな `LUCELINK_ACCESS_TOKEN` を登録します。値は画面共有・コマンド履歴・ログ・Frontend・配布ファイルに含めません。AIサービスのキーは認証の確認後に登録します。
+2. このWorkerの「Settings」→「Variables and Secrets」→「Add」で、種類を「Secret」にし、名前を `LUCELINK_ACCESS_TOKEN` とし、値には十分長いランダムな文字列を登録します。値は画面共有・コマンド履歴・ログ・Frontend・配布ファイルに含めません。AIサービスのキーは認証の確認後に登録します。
 3. 自分のWorkerの `/api/healthz` を確認します。トークンなしと誤ったトークンではHTTP 401、正しいトークンを `x-lucelink-token` ヘッダーに入れて送るとHTTP 200で `apiContract: "lucelink-3"` が返ります。この確認で生成APIは呼びません。ブラウザだけで確認する場合は、「2. Pagesと端末の接続」の手順で先に画面を設置し、AIサービスのキーを入れる前に接続を確認できます。
 4. 認証の確認後、同じWorkerの「Settings」→「Variables and Secrets」で、使うAIサービスのAPIキーを表の名前で「Secret」として登録します。
 
@@ -39,11 +39,11 @@ Cloudflareへのログイン、権限の承認とSecretの登録は利用者本�
 
 エージェントに、このGitHubリポジトリのURLと「このリポジトリの AGENT_SETUP.md に沿って、自分のCloudflareアカウントにLuceLinkを導入して」と伝えます。エージェントは配布物の版と配置先を確認し、利用者が承認したアカウント・プロジェクトで作業します。
 
-- **Cloudflare公式連携が使える場合**は、エージェントのプラグイン一覧でCloudflareを探します。連携がCloudflare公式であることを確認し、利用者がCloudflareの画面でログインして必要な権限を承認します。WorkerやPagesの作成・更新、配布ファイルのアップロードのうち、その連携が対応している操作を使います。情報参照だけの連携では、設置はブラウザで行います。 [CloudflareのAIエージェント向け設置案内](https://developers.cloudflare.com/agent-setup/)
+- **Cloudflare公式連携が使える場合**は、エージェントのプラグイン一覧でCloudflareを探します。連携がCloudflare公式であることを確認し、利用者がCloudflareの画面でログインして必要な権限を承認します。WorkerやPagesの作成・更新、配布ファイルのアップロードのうち、その連携が対応している操作を使います。連携機能が情報の参照にしか対応していない場合は、ブラウザで設置します。 [CloudflareのAIエージェント向け設置案内](https://developers.cloudflare.com/agent-setup/)
 - **公式連携が使えない場合**も、Chromeなどに対応するブラウザ操作機能があれば、上の「Workerと認証」「Pagesと端末の接続」に沿ってCloudflare管理画面の操作を補助できます。ブラウザ操作やローカルファイルの選択に対応していない場合は、エージェントの案内を見ながら利用者が操作します。
 - ログイン、二段階認証、権限の承認、Secretの入力が必要になったら、エージェントは操作をいったん止め、利用者に引き継ぎます。APIキー、アクセストークン、Cookie、トークン付きURLをチャットや作業記録に貼らないでください。
-- 設置後は、対応するWorkerの接続結果と、使うAIサービスのSecretの登録有無を確認します。返信や画像を生成すると料金がかかることがあるため、生成は利用者が選んで実行します。エージェントが操作できる範囲は、使う製品と権限によって変わります。
+- 設置後は、対応するWorkerの接続結果と、使うAIサービスのSecretの登録有無を確認します。返信や画像を生成すると料金がかかることがあるため、生成するかどうかは利用者本人が決めて実行します。エージェントが操作できる範囲は、使う製品と権限によって変わります。
 
 ## 更新がうまくいかないとき
 
-Cloudflareの旧Deployment・旧Versionへ戻すと、配信内容が戻ります。端末の保存データは別に扱い、復元が必要かを確認してからZIPを使います。背景画像なしのZIPで設定を復元する場合は、現在の背景画像を引き継ぐ先があり、画像を端末から読み出せることが必要です。[同梱マニュアル](MANUAL.md) のバックアップ節を参照してください。
+Cloudflareで以前のPages Deployment・Worker Versionに切り戻すと、配信するアプリを元の版に戻せます。端末に保存されたデータはこれとは別です。データの復元が必要かを確認してから、バックアップのZIPを使ってください。背景画像なしのZIPで設定を復元する場合は、現在の背景画像を引き継ぐ先があり、画像を端末から読み出せることが必要です。[同梱マニュアル](MANUAL.md) のバックアップ節を参照してください。
