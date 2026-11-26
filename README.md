@@ -1,10 +1,12 @@
-# LuceLink 3.0.1
+# LuceLink
+
+**バージョン 3.0**
 
 LuceLinkは、AIパートナーとの会話を続けたり、大切な発言を見返したりするためのアプリです。会話・メモ・テーマを自分の端末で管理できます。
 
 ## はじめる
 
-ご自身のCloudflareアカウントに、同じ版のWorkerとPagesを設置します。WorkerがAIサービスへ接続し、Pagesがアプリ画面を配信します。詳しい手順は [設置ガイド](docs/AGENT_SETUP.md)、使い方は [マニュアル](docs/MANUAL.md) をご覧ください。GitHubの「Releases」でLuceLink 3.0を開き、Assetsから配布ZIPを選びます。ZIPを展開すると、画面を配信する `app/` と、AIサービスへ接続する `worker/worker.js` が入っています。
+ご自身のCloudflareアカウントに、同じ版のWorkerとPagesを設置します。WorkerがAIサービスへ接続し、Pagesがアプリ画面を配信します。詳しい手順は [設置ガイド](docs/AGENT_SETUP.md)、使い方は [マニュアル](docs/MANUAL.md) をご覧ください。GitHubの[最新リリース](https://github.com/lucelink-hikari/LuceLink/releases/latest)を開き、「Assets」から LuceLink-3.0.zip を選びます。ZIPを展開すると、画面を配信する `app/` と、AIサービスへ接続する `worker/worker.js` が入っています。
 
 1. 更新の場合は、現在お使いのアプリで、最新のZIPバックアップを保存します。マイルームの背景画像も残したい場合は、書き出し時に背景画像を含めます。
 2. Workerを配置し、`LUCELINK_ACCESS_TOKEN` をWorkerのSecretに設定します。認証を確認してから、利用するAIサービスのAPIキーをWorkerのSecretに登録します。
@@ -13,6 +15,8 @@ LuceLinkは、AIパートナーとの会話を続けたり、大切な発言を�
 自分で設置するときも、AIエージェントに手伝ってもらうときも、[設置ガイド](docs/AGENT_SETUP.md)から始めてください。エージェントにはこのGitHubリポジトリのURLを渡して「LuceLinkを導入して」と依頼できます。Cloudflareへのログイン、権限の承認、Secretの入力はご自身で行ってください。
 
 OpenAI公式とOpenRouterで「ChatGPT Latest」を選べます。ChatGPTのその時点のInstantモデルを使うため、同じ名前でも提供元の更新により応答が変わる場合があります。
+
+SAIVerseとの会話連携に対応しています。Nexus Arkとは会話を書き出したり、月別RAWログを読み込んだりできます。詳しくは[マニュアル](docs/MANUAL.md#nexus-arkから会話を移す)をご覧ください。
 
 ## 利用前に知っておくこと
 
