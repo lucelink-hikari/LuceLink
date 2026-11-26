@@ -1,16 +1,16 @@
-# LuceLink 3.0 モデル一覧
+# LuceLink 3.0.1 モデル一覧
 
-2026年11月22日時点で、LuceLink 3.0に定義されているモデル候補をまとめています。ご自身のアカウントで利用できるモデルは、各AIサービスに接続したときの一覧で確認してください。
+2026年11月22日のモデル一覧を基に、11月26日のメンテナンス差分を反映しています。ご自身のアカウントで利用できるモデルは、各AIサービスに接続したときの一覧で確認してください。
 
 | 接続先 | アプリに定義されたID・系列 | 通常欄の候補 | 一覧を取得できないときの代替候補（うち通常欄） |
 | --- | --- | --- | --- |
-| OpenAI公式 | 20 | 10 | 19（10） |
+| OpenAI公式 | 20 | 11 | 20（11） |
 | Anthropic公式 | 15 | 7 | 15（7） |
 | Google公式 | 15 | 10 | 15（10） |
-| xAI公式 | 11 | 4 | 5（4） |
-| OpenRouter | 66 | 31 | 22（22） |
+| xAI公式 | 5 | 4 | 5（4） |
+| OpenRouter | 67 | 32 | 23（23） |
 
-コードに記載された接続先とモデルID・系列の組み合わせ、**計127件**を掲載します。内訳は代替定義76件、代替定義のない通常・Worker候補9件、通常・代替候補に含まれない並び順の定義24件、上限表だけの定義18件です。同じモデルも公式APIとOpenRouterで別に数えます。対象はUI・Workerの候補表と並び順、および出力上限表です。提供元から動的に取得する全モデルの件数は未確認です。
+コードに記載された接続先とモデルID・系列の組み合わせ、**計122件**を掲載します。内訳は代替定義78件、代替定義のない通常・Worker候補9件、通常・代替候補に含まれない並び順の定義17件、上限表だけの定義18件です。同じモデルも公式APIとOpenRouterで別に数えます。対象はUI・Workerの候補表と並び順、および出力上限表です。提供元から動的に取得する全モデルの件数は未確認です。
 
 ## 表の読み方
 
@@ -25,6 +25,7 @@
 | `gpt-6-astra` | GPT-6 Astra | 通常欄／Worker／代替 | 128,000 |
 | `gpt-6.2-astra` | GPT-6.2 Astra | 通常欄／Worker／代替 | 128,000 |
 | `gpt-6.2-sol` | GPT-6.2 Sol | 通常欄／Worker／代替 | 128,000 |
+| `chat-latest` | ChatGPT Latest | 通常欄／Worker／代替 | 128,000 |
 | `gpt-6.1-sol` | GPT-6.1 Sol | 通常欄／Worker／代替 | 128,000 |
 | `gpt-6.1-terra` | GPT-6.1 Terra | 通常欄／Worker／代替 | 128,000 |
 | `gpt-6-sol` | GPT-6 Sol | 通常欄／Worker／代替 | 128,000 |
@@ -41,7 +42,6 @@
 | `gpt-4.1-mini` | GPT-4.1 Mini | 代替 | 32,768 |
 | `gpt-4o` | GPT-4o | 代替 | 16,384 |
 | `gpt-4o-mini` | GPT-4o Mini | 代替 | 16,384 |
-| `gpt-4.1-nano` | — | 並び順 | 32,768 |
 
 ## Anthropic公式
 
@@ -92,12 +92,6 @@
 | `grok-4.5` | Grok 4.5 | 通常欄／Worker／代替 | 6,000（既定上限） |
 | `grok-4.3` | Grok 4.3 | 通常欄／Worker／代替 | 6,000（既定上限） |
 | `grok-4.20` | Grok 4.20 | 代替 | 6,000（既定上限） |
-| `grok-4-1-fast-reasoning` | — | 並び順 | 6,000（既定上限） |
-| `grok-4-1-fast-non-reasoning` | — | 並び順 | 6,000（既定上限） |
-| `grok-4-fast-reasoning` | — | 並び順 | 6,000（既定上限） |
-| `grok-4-fast-non-reasoning` | — | 並び順 | 6,000（既定上限） |
-| `grok-4-0709` | — | 並び順 | 6,000（既定上限） |
-| `grok-3` | — | 並び順 | 6,000（既定上限） |
 
 ## OpenRouter
 
@@ -107,6 +101,7 @@
 | `openai/gpt-6-astra` | GPT-6 Astra | 通常欄／Worker／代替 | 128,000 |
 | `openai/gpt-6.2-astra` | GPT-6.2 Astra | 通常欄／Worker／代替 | 128,000 |
 | `openai/gpt-6.2-sol` | GPT-6.2 Sol | 通常欄／Worker／代替 | 128,000 |
+| `openai/gpt-chat-latest` | ChatGPT Latest | 通常欄／Worker／代替 | 128,000 |
 | `openai/gpt-6.1-sol` | GPT-6.1 Sol | 通常欄／Worker／代替 | 128,000 |
 | `openai/gpt-6.1-terra` | GPT-6.1 Terra | 通常欄／Worker／代替 | 128,000 |
 | `openai/gpt-6-sol` | GPT-6 Sol | 通常欄／Worker／代替 | 128,000 |
@@ -170,8 +165,18 @@
 | `meta/muse-wonder` | — | 上限表のみ | 16,000 |
 | `meta/muse-spark-open` | — | 上限表のみ | 131,072 |
 
+## 2026年11月26日の提供状況
+
+- OpenAI公式のGPT-4.1 nanoは提供終了。OpenRouterでは公開カタログに掲載されています。公式のGPT-5／mini／nano／proは12月11日、GPT-5.1は2027年4月1日に終了予定です。OpenRouterのGPT-5／mini／nano／proにも12月11日の終了予定が掲載されています。
+- Anthropic公式のSonnet 4.5は11月30日、Opus 4.5は2027年1月22日に終了予定。Haiku 4.5は提供中です。OpenRouterでは3モデルとも掲載されており、公開カタログに終了日は掲載されていません。
+- Google公式のGemini 2.5 Pro／Flashは既存の利用条件付きで、12月1日からそれぞれGemini 3.8 Flash／3.5 Flash-Liteへ自動転送予定です。OpenRouterは両モデルに12月1日の掲載終了日を表示しています。Flash-Liteは両経路で掲載継続中です。
+- xAI公式の旧Grok 3／4／4.1 Fastの対象IDはGrok 4.3へ自動転送されるため、従来モデルとしての候補から外しています。OpenRouterの公開一覧では同じ旧モデルの掲載を確認できませんでした。
+
+参照先は [OpenAI](https://developers.openai.com/api/docs/deprecations)、[Anthropic](https://platform.claude.com/docs/en/about-claude/model-deprecations)、[Google](https://ai.google.dev/gemini-api/docs/deprecations)、[xAI](https://docs.x.ai/developers/migration/may-15-retirement)、[OpenRouter公開カタログ](https://openrouter.ai/api/v1/models) です。
+
 ## 通常チャットの画像入力・Temperature
 
+- ChatGPT Latestは両経路で画像入力に対応し、出力上限は128,000トークンです。OpenAI公式ではTemperatureを指定せず、OpenRouterでは対応パラメーターに沿って扱います。確認時のOpenRouterカタログにTemperatureは含まれていません。
 - 画像入力は公式APIごとのモデル判定と取得結果で決まります。Google直結ではGemini 4 Argon・Carbon・HydrogenをJPEG入力の対象にしています。OpenRouterは取得した `input_modalities` の `image` を参照し、Carbon・Hydrogen・Haiku 5.5の代替候補にも画像対応を指定しています。実通信は未確認です。
 - Temperatureを送らない条件は、OpenAIの一部のGPT-6系・GPT-5系・o系、AnthropicのFable・Mythos・Sonnet 5・Opus 4.7以降・Haiku 5.5に相当するコード上の条件、GoogleのGemini 3系／4 Argon・Carbon・Hydrogenです。OpenRouter版のCarbon・Hydrogen・Haiku 5.5もTemperatureを送信しません。他のOpenRouter候補は対応パラメータを参照します。
 - Meta Museの設定値はOpenRouterの出力上限表にあります。Museの直接API接続や通常欄・代替候補はありません。Spark 1.1／1.2とWonderの16,000はLuceLinkの暫定値です。Ember、Sparkの各経路も提供・実効上限・プライバシー条件は未確認です。
