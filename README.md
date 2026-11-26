@@ -1,4 +1,4 @@
-# LuceLink 3.0
+# LuceLink 3.0.1
 
 LuceLinkは、AIパートナーとの会話を続けたり、大切な発言を見返したりするためのアプリです。会話・メモ・テーマを自分の端末で管理できます。
 
@@ -11,6 +11,8 @@ LuceLinkは、AIパートナーとの会話を続けたり、大切な発言を�
 3. アプリ画面のファイル一式（Frontend）をPagesに配置します。自分のPagesを開き、接続設定に自分のWorkerのHTTPS URLとWorkerに登録したものと同じトークンを設定します。
 
 自分で設置するときも、AIエージェントに手伝ってもらうときも、[設置ガイド](docs/AGENT_SETUP.md)から始めてください。エージェントにはこのGitHubリポジトリのURLを渡して「LuceLinkを導入して」と依頼できます。Cloudflareへのログイン、権限の承認、Secretの入力はご自身で行ってください。
+
+OpenAI公式とOpenRouterで「ChatGPT Latest」を選べます。ChatGPTのその時点のInstantモデルを使うため、同じ名前でも提供元の更新により応答が変わる場合があります。
 
 ## 利用前に知っておくこと
 
