@@ -1,4 +1,4 @@
-# LuceLink 3.0 テーマ一覧
+# LuceLink 3.0.1 テーマ一覧
 
 LuceLink 3.0では、設定の「テーマ」で初期登録テーマを選べます。追加テーマは配布ZIPの `app/additional-themes/` にあるJSONを一つずつ選び、設定の「テーマ読み込み」から追加します。
 
