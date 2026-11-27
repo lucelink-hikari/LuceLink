@@ -25,7 +25,7 @@ SAIVerseとの会話連携に対応しています。Nexus Arkとは会話を書
 - 選ぶモデルや送るプロンプト、Web検索、再試行などによってAPI利用料金がかかることがあります。通常チャットのWeb検索はOpenRouter接続で利用者が有効にした場合に使います。
 - 会話、設定、メモ、ユーザーテーマはバックアップ対象です。Atelierの生成画像や参考画像は含まれないため、残したい画像を個別に保存してください。
 
-[機能と制限](docs/FEATURES.md) · [モデル一覧](docs/MODEL-LIST.md) · [テーマ一覧](docs/THEME-LIST.md)
+[製品仕様書](docs/LuceLink-User-Spec-3.0.md) · [機能と制限](docs/FEATURES.md) · [モデル一覧](docs/MODEL-LIST.md) · [テーマ一覧](docs/THEME-LIST.md)
 
 ## お問い合わせ・謝辞
 
